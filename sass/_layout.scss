@@ -1,9 +1,16 @@
+@use "./query";
+
 .container {
   max-width: 120rem;
   margin: 8rem auto;
   background-color: var(--color-grey-light-1);
   box-shadow: var(--shadow-dark);
   min-height: 50rem;
+
+  @include query.respond(largest) {
+    margin: 0;
+    max-width: 100%;
+  }
 }
 .header {
   font-size: 1.4rem;
@@ -13,10 +20,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include query.respond(small) {
+    flex-wrap: wrap;
+    height: 11rem;
+    align-content: space-around;
+  }
 }
 
 .content {
   display: flex;
+
+  @include query.respond(big) {
+    flex-direction: column;
+  }
 }
 .sidebar {
   display: flex;
@@ -36,6 +53,19 @@
   display: flex;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
+
+  @include query.respond(big) {
+    padding: 3rem;
+  }
+
+  @include query.respond(medium) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include query.respond(small) {
+    padding: 0;
+  }
 }
 
 .description {
@@ -45,6 +75,16 @@
   background-color: white;
   box-shadow: var(--shadow-light);
   padding: 3rem;
+
+  @include query.respond(big) {
+    padding: 1.5rem;
+    margin-right: 3rem;
+  }
+
+  @include query.respond(medium) {
+    margin-bottom: 3rem;
+    margin-right: 0;
+  }
 }
 .user-reviews {
   flex: 1;

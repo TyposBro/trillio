@@ -1,3 +1,5 @@
+@use "./query";
+
 //* Logo
 .logo {
   height: 3.25rem;
@@ -10,6 +12,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include query.respond(small) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     display: inline-block;
     font-size: inherit;
@@ -115,11 +124,16 @@
   font-size: 1.4rem;
   margin-top: 3.5rem;
   position: relative;
+
+  @include query.respond(big) {
+    display: flex;
+    margin-top: 0;
+  }
   &__item {
     position: relative;
 
-    &:not(:last-child) {
-      margin-bottom: 0.5rem;
+    @include query.respond(big) {
+      flex: 1;
     }
 
     &::before {
@@ -157,6 +171,16 @@
       position: relative;
       display: flex;
       align-items: center;
+
+      @include query.respond(big) {
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      @include query.respond(medium) {
+        flex-direction: column;
+        padding: 0.5rem;
+      }
     }
   }
 
@@ -165,6 +189,12 @@
     height: 1.75rem;
     fill: currentColor;
     margin-right: 2rem;
+
+    @include query.respond(medium) {
+      margin: 0.3rem auto;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -174,6 +204,10 @@
   text-align: center;
   padding: 2.5rem;
   color: var(--color-grey-light-4);
+
+  @include query.respond(big) {
+    display: none;
+  }
 }
 
 //* Gallery
@@ -197,6 +231,16 @@
     text-transform: uppercase;
     font-size: 2.25rem;
     letter-spacing: 0.1rem;
+
+    @include query.respond(medium) {
+      font-size: 1.8em;
+      padding: 1.25rem 2rem;
+    }
+
+    @include query.respond(small) {
+      font-size: 1.6em;
+      padding: 0.5rem 0.7rem;
+    }
   }
   &__stars {
     margin-right: auto;
@@ -229,14 +273,27 @@
     margin-left: 3rem;
     color: var(--color-grey-light-2);
 
+    @include query.respond(medium) {
+      font-size: 1.8em;
+      padding: 0 1.5rem;
+    }
+
     &-average {
       font-size: 2.25rem;
       font-weight: 300;
       margin-bottom: -0.3rem;
+
+      @include query.respond(medium) {
+        font-size: 1.8em;
+      }
     }
     &-count {
       font-size: 0.8rem;
       text-transform: uppercase;
+
+      @include query.respond(medium) {
+        font-size: 0.5em;
+      }
     }
   }
 }
@@ -341,12 +398,12 @@
   color: var(--color-grey-dark-3);
   display: flex;
   align-items: center;
-  // justify-content: space-between;
 
   &__count {
     margin-right: auto;
   }
   &__friends {
+    display: flex;
   }
 
   &__photo {
@@ -357,7 +414,7 @@
     border: 0.2rem solid white;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -371,6 +428,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @include query.respond(big) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -428,6 +490,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @include query.respond(big) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     text-transform: uppercase;
